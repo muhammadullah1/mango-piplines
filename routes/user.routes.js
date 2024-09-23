@@ -1,7 +1,7 @@
-import express from 'express';
-import { getAllUsers} from '../controllers/user.controllers.js';
+const express = require('express');
+const router = express.Router({ mergeParams: true });
+const controller =  require('../controllers/user.controllers');
 
-const router = express.Router();
-router.get('/', getAllUsers);
+router.get('/', controller.getAllUsers)
 
-export default router;
+module.exports = router;

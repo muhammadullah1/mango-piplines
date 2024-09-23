@@ -1,6 +1,6 @@
-import 'dotenv/config'
-import connectToMongo from './db/index.js'
-import { app } from './app.js'
+const { connectToMongo } = require('./db/index.js')
+const app  = require('./app.js')
+require('dotenv').config();
 
 const port = process.env.PORT || 8000
 connectToMongo()
