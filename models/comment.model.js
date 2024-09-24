@@ -1,25 +1,36 @@
-import mongoose, {Schema} from "mongoose"
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const validator = require('validator');
 
 const CommentSchema = new Schema({
-  post: {
-    type: Schema.Types.ObjectId,
-    ref: 'Post',
+  postId: {
+    type: Number,
     required: true,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+  id: {
+    type: Number,
     required: true,
   },
-  content: {
+  name: {
     type: String,
     required: true,
-    maxLength: [100, 'Comment cannot exceed 100 characters'],
   },
-  likes: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  }],
+  email: {
+    type: String,
+    required: true,
+    lowercase: true,
+    validate: {
+      validator: (email) => {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+      },
+      message: 'Please provide a valid email address',
+    },
+  },
+  body: {
+    type: String,
+    required: true,
+  },
 }, {timestamps: true});
 
-export const Comment = mongoose.model('Comment', CommentSchema);
+exports.Comment = mongoose.model('Comment', CommentSchema, 'comments');

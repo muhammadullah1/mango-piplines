@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const PostSchema = new Schema({
-  userId: {
+const PhotoSchema = new Schema({
+  albumId: {
     type: Number,
     required: true,
   },
@@ -14,10 +14,14 @@ const PostSchema = new Schema({
     type: String,
     required: true,
   },
-  body: {
+  url: {
     type: String,
     required: true,
   },
-},{timestamps: true});
+  thumbnailUrl: {
+    type: String,
+    required: true,
+  },
+}, {timestamps: true});
 
-exports.Post = mongoose.model('Post', PostSchema, 'posts');
+exports.Photo = mongoose.model('Photo', PhotoSchema, 'photos');

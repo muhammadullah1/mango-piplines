@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const PostSchema = new Schema({
+const TodoSchema = new Schema({
   userId: {
     type: Number,
     required: true,
@@ -14,10 +14,10 @@ const PostSchema = new Schema({
     type: String,
     required: true,
   },
-  body: {
-    type: String,
+  completed: {
+    type: Boolean,
     required: true,
   },
-},{timestamps: true});
+}, {timestamps: true});
 
-exports.Post = mongoose.model('Post', PostSchema, 'posts');
+exports.Todo = mongoose.model('Todo', TodoSchema, 'todos');
