@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true, parameterLimit: 5
 app.use(cors());
 app.options("*", cors());
 
-app.get("/api/test", (req, res) => { res.status(200).send(`API is working`)});
+app.get("/api/test", (req, res) => { res.status(200).send(`API is working with new changes in ${req.body}`)});
 app.use("/api", router);
 
 app.use((req, res) => {
