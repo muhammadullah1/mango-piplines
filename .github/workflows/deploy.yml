@@ -2,7 +2,8 @@ name: CICD
 
 on:
   push:
-    branches: ["main"]
+    branches: 
+        - main
 
 defaults:
   run:
@@ -22,8 +23,7 @@ jobs:
           script: |
             # Commands to execute on the remote server after logging in
             cd mango-piplines
-            git pull
-            npm i
+            git pull origin main
+            npm install
              # npx sequelize db:migrate
-            pm2 restart 0
-             # Additional commands...
+            pm2 restart index.js
