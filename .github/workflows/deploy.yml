@@ -23,9 +23,9 @@ jobs:
             cd /home/ec2-user/mango-piplines
             git pull origin main
             npm install
-            pm2 restart nodeapp || pm2 start index.js --name nodeapp
+            pm2 delete nodeapp || true
+            pm2 start index.js --name nodeapp
 
-            # name: CICD
 
 # on:
 #   push:
